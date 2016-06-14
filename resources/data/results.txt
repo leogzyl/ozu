@@ -1,0 +1,40 @@
+Primeros resultados sin pre-procesar nombres :)
+Para todo el corpus, con n=1
+Seleccionando al azar cualquier clave del mapa principal
+
+"Puelcenca"
+"Borrtosabelay desa d'"
+"ialvajonstala"
+"ésijos"
+"ampo derguel"
+"üencorciorarar"
+"telberucincode d'Arrrejalalzaz"
+"Peralo"
+"óngaran delbriufar"
+"(Vireronara"
+"horriloñes"
+"osun"
+"ïgan, Sa der"
+"Sencí"
+"Óra Elenalo Taue dede diama Rigar"
+"testabilmozóntelueja de Comtentes depocordolalfe"
+"jon darvinantilla"
+"otolllmozola Gre Mo Elónade Ches Zuellahonde de des"
+"tiaros/Lian"
+
+Seleccionando el punto de partida de entre las mayúsculas :)
+
+"Àlagamomujo"
+"Èntaniogue Arrdevar"
+"Úrlóntarchinte lobalas"
+"Páceiauiricí"
+", le Oraros"
+"Zaname dedeclva"
+"Écijuran Age deguel Manénitbínente Me Ta dafrme Sa"
+
+
+n=4
+"Rafael de la Vicencia de Tajo" OMG!!!!
+"Esponellet de los de Duero"
+"Bastillosa del Freila del Rey"
+"Menga de Altarejo de Herre"

@@ -1,0 +1,36 @@
+Proceso de carga:
+ -Limpiar nombres traducidos (/), quedarse sólo con el primero
+ -Arreglar orden del artículo, ponerlo al principio (Hospitalet, L')
+ -Importar fichero limpio a base de datos H2 embebida
+
+Servicios de Combos:
+-CA: Sin parámetros. Devuelve CCAA (COD, DESC)
+-Provincia: Recibe CA. Devuelve Provincias de CA (COD,DESC)
+
+#################### SOLUCION 1 ###########################
+Servicio de consulta:
+ -Recibe tamaño de token, códigos opcionales de CA y provincia 
+ -Construye y devuelve mapa de frecuencias
+
+App cliente:
+ -Presenta formulario de consulta con CA, provincia y tamaño de token
+ -Invoca servicio de consulta
+ -Guarda el mapa de frecuencias recibido en memoria de cliente
+ -Genera nombre aleatorio en base al mapa de frecuencias recibido
+ -El mapa de frecuencias se reutiliza en cliente hasta una nueva petición
+ 
+#################### SOLUCION 2 ###########################
+Como parte del proceso de carga, generar todos los mapas de frecuencia posibles
+y guardarlos en BD (CA, PROVINCIA y tamaño de token 1 a 4, por ejemplo)
+
+Al solicitar un nombre, buscar el mapa de frecuencias para los parámetros,
+calcularlo y devolverlo.
+
+#################### SOLUCION 3 ###########################
+Como la 2 pero prescindir de la base de datos
+El proceso de carga lee el CSV y genera ficheros estáticos en formato EDN:
+ -Comunidades
+ -Provincias
+ -Frecuencias para cada combinación Comunidad, Provincia, tamaño de token (entre 1 y 3 o 4)
+Los ficheros de frecuencia se pueden llamar [cod-ca]/[cod-prov]/[token-length]/freq.edn
+Al solicitar un nombre, leer el mapa de frecuencias del fichero correspondiente, y calcular.
