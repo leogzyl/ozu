@@ -14,11 +14,11 @@
           result
           (recur (rest data) (conj result (zipmap hkeys (clojure.string/split (first data) #";")))))))))
 
-(defn keep-as-set [m keys]
-   (into #{} (map #(into {} (for [[k v] % :when (some (fn [a] (= a k)) keys)] [k v])) m )))
+(defn keep-as-set [records keys]
+   (into #{} (map #(into {} (for [[k v] % :when (some (fn [a] (= a k)) keys)] [k v])) records )))
 
-(defn get-ccaa [m]
-   (keep-as-set m [:ca_cod :ca_desc]))
+(defn get-ccaa [records]
+   (keep-as-set records [:ca_cod :ca_desc]))
 
 (defn destraduce [nombre]
   (clojure.string/trim (first (clojure.string/split nombre #"[/-]"))))
@@ -29,8 +29,8 @@
 (defn desapostrofe [nombre]
   (clojure.string/replace nombre  #"(.*),\s?([lL]')" "$2$1"))
 
-(defn get-clean-val [entry]
-  (-> entry :mun_desc destraduce desapostrofe desarticulo))
+(defn get-clean-val [map-entry]
+  (-> map-entry :mun_desc destraduce desapostrofe desarticulo))
 
 (defn get-text-block [m]
   (let [munvals (map get-clean-val m)]

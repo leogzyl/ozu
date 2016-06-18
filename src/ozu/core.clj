@@ -29,9 +29,8 @@
 
 (defn -main
   ([]
-   (-main ""))
+   (-main 2))
   ([n]
    (-main "" n))
   ([ca-cod n]
-   (println ca-cod n)
    (println (walk (read-freqs ca-cod n)))))
