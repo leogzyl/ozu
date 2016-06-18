@@ -13,7 +13,7 @@
     (nth K (rand-int (count K)))))
 
 
-(defn walk2 [m]
+(defn walk [m]
   (loop [k (rand-upper-key m)
          rand-char (weighted-rand-key (m k))
          result k]
@@ -34,4 +34,4 @@
    (-main "" n))
   ([ca-cod n]
    (println ca-cod n)
-   (println (walk2 (read-freqs ca-cod n)))))
+   (println (walk (read-freqs ca-cod n)))))
