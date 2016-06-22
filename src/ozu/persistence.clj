@@ -1,12 +1,22 @@
 (ns ozu.persistence
   (:require [clojure.java.io :as io])
-  (:require [clojure.edn :as edn])
-  (:gen-class))
+  (:require [clojure.edn :as edn]))
 
-(def freq-path "resources/data/store/frequencies/")
+(def store-path "resources/data/store/")
+(def ccaa-path (str store-path "ccaa/ccaa.edn"))
+(def freq-path (str store-path "frequencies/"))
+
+(defn recursive-delete [directory]
+  (if (.isDirectory directory)
+    (when (reduce #(and %1 (recursive-delete %2)) true (.listFiles directory))
+      (.delete directory))
+    (.delete directory)))
+
+(defn clear-store []
+  (recursive-delete (io/as-file store-path)))
 
 (defn write-ccaa-records [records]
-  (let [ca-filename "resources/data/store/ccaa/ccaa.end"]
+  (let [ca-filename ccaa-path]
     (io/make-parents ca-filename)
     (spit ca-filename records)))
 
@@ -17,4 +27,8 @@
 
 (defn read-freqs [ca-cod n]
   (let [filename (str freq-path ca-cod n ".edn")]
+    (edn/read-string (slurp filename))))
+
+(defn read-ccaa []
+  (let [filename ccaa-path]
     (edn/read-string (slurp filename))))

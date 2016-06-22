@@ -2,8 +2,7 @@
   (:require [clojure.string :as str])
   (:require [clojure.java.io :as io])
   (:require ozu.persistence)
-  (:require ozu.markov)
-  (:gen-class))
+  (:require ozu.markov))
 
 (def source-filename "resources/data/import/15codmun.csv")
 
@@ -42,6 +41,7 @@
 (defn import-all []
   (let [records (read-csv)
         ccaa (get-ccaa records)]
+    (ozu.persistence/clear-store)
     (ozu.persistence/write-ccaa-records ccaa)
     (doseq [ca-cod (cons nil (map :ca_cod ccaa))
             n (range 1 5)]

@@ -1,4 +1,5 @@
-1.- import-all debe borrar directorio de destino antes de volcar
-2.- Validaciones, gestión de errores, etc
-3.- Documentación, comentarios
-4.- Tests
+1.- Validaciones, gestión de errores, etc
+2.- Documentación, comentarios
+3.- Tests
+4.- Bootstrap
+5.- I18N

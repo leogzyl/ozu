@@ -1,5 +1,4 @@
-(ns ozu.markov
-  (:gen-class))
+(ns ozu.markov)
 
 (defn map-vals [m f]
   (into {} (for [[k v] m] [k (f v)])))

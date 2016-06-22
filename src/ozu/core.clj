@@ -1,12 +1,15 @@
 (ns ozu.core
+  (:gen-class)
   (:require ozu.markov)
-  (:require ozu.persistence)
-  (:gen-class))
+  (:require ozu.persistence))
 
-(defn -main
+(defn generate
   ([]
-   (-main 2))
+   (generate 2))
   ([n]
-   (-main "" n))
+   (generate "" n))
   ([ca-cod n]
-   (println (ozu.markov/walk (ozu.persistence/read-freqs ca-cod n)))))
+   (ozu.markov/walk (ozu.persistence/read-freqs ca-cod n))))
+
+(defn get-ccaa-records []
+  (ozu.persistence/read-ccaa))
