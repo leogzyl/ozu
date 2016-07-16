@@ -3,16 +3,15 @@
             [compojure.core :as cc]
             [compojure.handler :as handler]
             [compojure.route :as route]
+            [ring.util.response :refer [redirect]]
             [ring.adapter.jetty :as jetty])
   (:gen-class))
 
 (cc/defroutes app-routes
-  (cc/GET "/"
-       []
-       (views/home-page {}))
-  (cc/POST "/"
-        {params :params}
-        (views/home-page params))
+  (cc/GET "/"  {params :params}
+       (views/home-page params))
+  (cc/POST "/" {params :params}
+        (redirect (str "/?ca-cod=" (:ca-cod params) "&n=" (:n params)) :see-other))
   (route/resources "/")
   (route/not-found "Not Found"))
 
