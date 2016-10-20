@@ -2,7 +2,7 @@
   (:require [clojure.java.io :as io])
   (:require [clojure.edn :as edn]))
 
-(def store-path "resources/data/store/")
+(def store-path "data/store/")
 (def ccaa-path (str store-path "ccaa/ccaa.edn"))
 (def freq-path (str store-path "frequencies/"))
 
@@ -27,8 +27,8 @@
 
 (defn read-freqs [ca-cod n]
   (let [filename (str freq-path ca-cod n ".edn")]
-    (edn/read-string (slurp filename))))
+    (edn/read-string (slurp (io/resource filename)))))
 
 (defn read-ccaa []
   (let [filename ccaa-path]
-    (edn/read-string (slurp filename))))
+    (edn/read-string (slurp (io/resource filename)))))

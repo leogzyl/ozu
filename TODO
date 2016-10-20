@@ -1,5 +1,6 @@
-- Validaciones, gestión de errores, etc
+- Validaciones, gestión de errores, etc por parte de la app, no navegador
 - Documentación, comentarios
 - Tests
 - I18N
 - About page
+- Bootstrap grid system

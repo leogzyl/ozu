@@ -7,16 +7,31 @@
             [ring.adapter.jetty :as jetty])
   (:gen-class))
 
+(defn gen-error
+  [status message]
+  {:status status
+   :headers {"Content-Type" "text/html; charset=utf-8"}
+   :body (views/error-page message)})
+
 (cc/defroutes app-routes
   (cc/GET "/"  {params :params}
        (views/home-page params))
   (cc/POST "/" {params :params}
         (redirect (str "/?ca-cod=" (:ca-cod params) "&n=" (:n params)) :see-other))
   (route/resources "/")
-  (route/not-found "Not Found"))
+  (route/not-found (gen-error 404 "El recurso solicitado no se ha encontrado")))
+
+(defn wrap-exception-handling
+  [handler]
+  (fn [request]
+    (try
+      (handler request)
+      (catch Exception e
+        (gen-error 400 "Los datos enviados no son válidos")))))
 
 (def app
-  (handler/site app-routes))
+  (-> (handler/api app-routes)
+      wrap-exception-handling))
 
 (defn -main
   [& [port]]

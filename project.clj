@@ -1,5 +1,5 @@
 (defproject ozu "0.1"
-  :description "Spanish town name generator based on Markov chanis"
+  :description "Spanish town name generator using Markov chanis"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :license {:name "Eclipse Public License"

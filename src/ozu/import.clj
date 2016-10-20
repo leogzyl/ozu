@@ -4,10 +4,10 @@
   (:require ozu.persistence)
   (:require ozu.markov))
 
-(def source-filename "resources/data/import/15codmun.csv")
+(def source-filename "data/import/15codmun.csv")
 
 (defn read-csv []
-  (with-open [rdr (io/reader source-filename)]
+  (with-open [rdr (io/reader (io/resource source-filename))]
     (let [lseq (line-seq rdr)
           header (first lseq)
           hkeys (map keyword (str/split header #";"))]
