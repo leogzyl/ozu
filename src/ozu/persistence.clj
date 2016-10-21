@@ -13,15 +13,15 @@
     (.delete directory)))
 
 (defn clear-store []
-  (recursive-delete (io/as-file store-path)))
+  (recursive-delete (io/as-file (str "resources/" store-path))))
 
 (defn write-ccaa-records [records]
-  (let [ca-filename ccaa-path]
+  (let [ca-filename (str "resources/" ccaa-path)]
     (io/make-parents ca-filename)
     (spit ca-filename records)))
 
 (defn write-freq-records [ca-freqs ca-cod n]
-  (let [freq-filename (str freq-path ca-cod n ".edn")]
+  (let [freq-filename (str "resources/" freq-path ca-cod n ".edn")]
     (io/make-parents freq-filename)
     (spit freq-filename ca-freqs)))
 
