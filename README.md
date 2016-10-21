@@ -10,7 +10,7 @@ After cloning the project, run this leiningen task at the project root in order
 to generate the necessary data files:
 
 ```
-lein run -m ozu.core/generate
+lein run -m ozu.import/import-all
 ```
 
 then, to start the server, run 
