@@ -4,7 +4,7 @@ Spanish town name generator using Markov chains
 
 ## Usage
 
-This assumes a working [link](http://leiningen.org/ "Leiningen") setup.
+This assumes a working [Leiningen](http://leiningen.org/ "Leiningen") setup.
 
 After cloning the project, run this leiningen task at the project root in order 
 to generate the necessary data files:
