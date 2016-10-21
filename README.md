@@ -1,36 +1,31 @@
-# ozu
+# Ozu!
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
+Spanish town name generator using Markov chains
 
 ## Usage
 
-FIXME: explanation
+This assumes a working [link](http://leiningen.org/ "Leiningen") setup.
 
-    $ java -jar ozu-0.1.0-standalone.jar [args]
+After cloning the project, run this leiningen task at the project root in order 
+to generate the necessary data files:
 
-## Options
+```
+lein run -m ozu.core/generate
+```
 
-FIXME: listing of options this app accepts.
+then, to start the server, run 
 
-## Examples
+```
+lein ring server
+```
 
-...
+Your web browser should open automatically and display the main page. Have fun!
 
-### Bugs
+## Standalone JAR
 
-...
+`lein uberjar` will generate a standalone JAR that you can run with `java -jar`
 
-### Any Other Sections
-### That You Think
-### Might be Useful
 
-## License
-
-Copyright © 2016 FIXME
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
